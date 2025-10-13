@@ -28,9 +28,10 @@
       "id": 4,
       "nome": "Camiseta Básica Masculina",
       "categoria": "Sessão 4",
-      "secao": "Moda",
+      "secao": "Sessão 4",
       "preco": 49.90,
       "emEstoque": false
     }
   ]
 }
+
