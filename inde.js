@@ -37,7 +37,7 @@ if(filtered.length > 0){
 
 else{
 
-divafSearchEl.innerHTML = 'Produto Indisponível'
+divafSearchEl.innerHTML = '<strong>Produto Indisponível</strong>'
 
 }
 
@@ -62,6 +62,7 @@ divafSearchEl.innerHTML = 'Produto Indisponível'
     searchEl.click()
     let val = inputEl.value;
     inputEl.value = val.charAt(0).toUpperCase() + val.slice(1);
+
 
 
 
