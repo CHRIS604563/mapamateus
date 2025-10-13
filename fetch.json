@@ -1,0 +1,36 @@
+{
+  "produtos": [
+    {
+      "id": 1,
+      "nome": "Arroz Integral 1kg",
+      "categoria": "Alimentos",
+      "secao": "Sessão 1",
+      "preco": 8.99,
+      "emEstoque": false
+    },
+    {
+      "id": 2,
+      "nome": "Shampoo Anticaspa 400ml",
+      "categoria": "Higiene Pessoal",
+      "secao": "Sessão 2",
+      "preco": 17.50,
+      "emEstoque": true
+    },
+    {
+      "id": 3,
+      "nome": "Detergente Neutro 500ml",
+      "categoria": "Limpeza",
+      "secao": "Sessão 3",
+      "preco": 3.49,
+      "emEstoque": true
+    },
+    {
+      "id": 4,
+      "nome": "Camiseta Básica Masculina",
+      "categoria": "Sessão 4",
+      "secao": "Moda",
+      "preco": 49.90,
+      "emEstoque": false
+    }
+  ]
+}
