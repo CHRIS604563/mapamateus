@@ -28,10 +28,110 @@
       "id": 4,
       "nome": "Camiseta Básica Masculina",
       "categoria": "Sessão 4",
-      "secao": "Sessão 4",
+      "secao": "Moda",
       "preco": 49.90,
       "emEstoque": false
+    },
+{
+      "nome": "Arroz Branco Tipo 1",
+      "preco": 15.90,
+      "secao": "Mercearia",
+      "status": true
+    },
+    {
+      "nome": "Feijão Carioca Premium",
+      "preco": 8.49,
+      "secao": "Mercearia",
+      "status": true
+    },
+    {
+      "nome": "Macarrão Espaguete 500g",
+      "preco": 4.29,
+      "secao": "Massas",
+      "status": true
+    },
+    {
+      "nome": "Óleo de Soja 900ml",
+      "preco": 6.89,
+      "secao": "Mercearia",
+      "status": false
+    },
+    {
+      "nome": "Leite Integral 1L",
+      "preco": 4.59,
+      "secao": "Laticínios",
+      "status": true
+    },
+    {
+      "nome": "Queijo Mussarela 500g",
+      "preco": 23.99,
+      "secao": "Laticínios",
+      "status": true
+    },
+    {
+      "nome": "Presunto Cozido 200g",
+      "preco": 9.99,
+      "secao": "Frios",
+      "status": false
+    },
+    {
+      "nome": "Refrigerante Cola 2L",
+      "preco": 8.49,
+      "secao": "Bebidas",
+      "status": true
+    },
+    {
+      "nome": "Suco Natural de Laranja 1L",
+      "preco": 7.29,
+      "secao": "Bebidas",
+      "status": true
+    },
+    {
+      "nome": "Sabonete Neutro 90g",
+      "preco": 2.19,
+      "secao": "Higiene",
+      "status": true
+    },
+    {
+      "nome": "Shampoo Anticaspa 400ml",
+      "preco": 18.90,
+      "secao": "Higiene",
+      "status": false
+    },
+    {
+      "nome": "Detergente Neutro 500ml",
+      "preco": 2.59,
+      "secao": "Limpeza",
+      "status": true
+    },
+    {
+      "nome": "Sabão em Pó 1kg",
+      "preco": 14.79,
+      "secao": "Limpeza",
+      "status": true
+    },
+    {
+      "nome": "Papel Higiênico 12x30m",
+      "preco": 16.49,
+      "secao": "Higiene",
+      "status": true
+    },
+    {
+      "nome": "Cerveja Pilsen Lata 350ml",
+      "preco": 4.19,
+      "secao": "Bebidas",
+      "status": false
+    },
+    {
+      "nome": "Manteiga com Sal 200g",
+      "preco": 10.99,
+      "secao": "Laticínios",
+      "status": true
     }
+
+
+
+
+    
   ]
 }
-
