@@ -15,6 +15,11 @@
   margin-right: auto;
 }
 
+.black{
+background-color: red;
+
+}
+
 .product-card {
   background: #fff;
   border: 1px solid #ddd;
@@ -77,7 +82,7 @@
     }
 
     .container {
-      background: #fff;
+      background:#f4eadb;
       border-radius: 20px;
       box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
       width:100% ;
@@ -173,3 +178,6 @@
   border-radius: 6px;
   border: 1px solid #ccc;
 }
+
+
+
