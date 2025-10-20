@@ -39,8 +39,6 @@ entradaEl.classList.add('highlight')
 
 
 
-
-
 searchEl.addEventListener('click',()=>{
 
 fetch('fetch.json')
@@ -65,13 +63,13 @@ if(filtered.length > 0){
         let statusText = item.status ? 'Produto Disponível' : 'Produto Indisponível';
         return `
           <div>
-          <button class='product-card' onclick='toCheck(event)'>
+          <button class='product-card' >
             <p><strong class='product-name'>${item.nome}</strong></p> - R$${item.preco}
             <p class='item-secao'>
             ${item.secao}
             <p>
             <div class="status">${statusText}</div>
-  <input id='input-checkbox'  type="checkbox">
+  <input id='input-checkbox'  type="checkbox" onclick='toCheck(event)'>
             
           </button>
           </div>
@@ -121,11 +119,10 @@ function toCheck(event) {
   let checkbox = card.querySelector('#input-checkbox');
   // Now check if it's checked
   if (checkbox.checked) {
-  console.log(secao.innerHTML)  
 
    if(secao.textContent.trim() === 'Sessão 1'){
     let myE = mapaEl.querySelector('#s1')
-    myE.classList.toggle('highlight')
+    myE.classList.add('highlight')
 
 
 
@@ -134,14 +131,14 @@ function toCheck(event) {
 
  else if(secao.textContent.trim() === 'Sessão 2'){
     let myE = mapaEl.querySelector('#s2')
-    myE.classList.toggle('highlight')
+    myE.classList.add('highlight')
     
 
 
   }
  else if(secao.textContent.trim() === 'Sessão 3'){
     let myE = mapaEl.querySelector('#s3')
-    myE.classList.toggle('highlight')
+    myE.classList.add('highlight')
 
 
   }
@@ -149,31 +146,72 @@ function toCheck(event) {
 
  else if(secao.textContent.trim() === 'Sessão 4'){
     let myE = mapaEl.querySelector('#s4')
-    myE.classList.toggle('highlight')
+    myE.classList.add('highlight')
 
 
 
   }
  else if(secao.textContent.trim() === 'Sessão 5'){
     let myE = mapaEl.querySelector('#s5')
-    myE.classList.toggle('highlight')
+    myE.classList.add('highlight')
 
 
 
   }
 
 
-  
-else{
-myE.style.background = 'white'
+
+  }
+else if(!checkbox.checked){
+
+
+   if(secao.textContent.trim() === 'Sessão 1'){
+    let myE = mapaEl.querySelector('#s1')
+    myE.classList.remove('highlight')
+
+
+
+  }
+
+ else if(secao.textContent.trim() === 'Sessão 2'){
+    let myE = mapaEl.querySelector('#s2')
+    myE.classList.remove('highlight')
+    
+
+
+  }
+ else if(secao.textContent.trim() === 'Sessão 3'){
+    let myE = mapaEl.querySelector('#s3')
+    myE.classList.remove('highlight')
+
+
+  }
+
+
+ else if(secao.textContent.trim() === 'Sessão 4'){
+    let myE = mapaEl.querySelector('#s4')
+    myE.classList.remove('highlight')
+
+
+
+  }
+ else if(secao.textContent.trim() === 'Sessão 5'){
+    let myE = mapaEl.querySelector('#s5')
+    myE.classList.remove('highlight')
+
+
+
+  }
+
+
+
+
+
+
 
 }
 
 
-
-
-
-  }
 }
 
 
@@ -187,6 +225,4 @@ myE.style.background = 'white'
 
 
   });
-
-
 
