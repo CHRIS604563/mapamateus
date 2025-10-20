@@ -36,9 +36,6 @@ entradaEl.classList.add('highlight')
 
 })
 
-if (/Mobi|Android|iPhone/i.test(navigator.userAgent)) {
-  document.querySelector('meta[name="viewport"]').setAttribute('content', 'width=1024, initial-scale=0.8');
-}
 
 
 
@@ -190,5 +187,6 @@ myE.style.background = 'white'
 
 
   });
+
 
 
