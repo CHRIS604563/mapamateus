@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Mapa Supermercado — Layout (HTML + CSS)</title>
+  <style>
+    /* --- Global / Visual guide to match the provided image --- */
+    :root{
+      --bg:#f2eef0;        /* soft paper */
+      --frame:#d7cfc7;     /* outer border */
+      --floor:#eef4f9;     /* inside floor */
+      --aisle:#8b5cf6;     /* purple aisles */
+      --aisle-shadow:#6b49c9;
+      --label-dark:#111827;
+      --padaria:#f7d36c;   /* yellow */
+      --carnes:#f7a6c6;    /* light pink */
+      --horti:#bff3c9;     /* green */
+      --impulse:#f87171;   /* red bar */
+      --checkout:#fef3c7;  /* pale yellow for small impulse blocks */
+      --sidepanel:#f3e6ff; /* lavender panels */
+      --water:#cfeefd;     /* aqua */
+      --darkpanel:#0b0b0b; /* black panel */
+      --text-muted:#6b7280;
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial, "Helvetica Neue";
+    }
+
+    *{box-sizing:border-box}
+    
+
+    /* map paper */
+    .map{position:relative;background:var(--floor);height:700px;border-radius:6px;padding:26px;border:12px solid rgba(255,255,255,0.5)}
+
+    /* Top labels row */
+    .top-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}
+    .top-left, .top-center, .top-right{display:flex;gap:16px;align-items:center}
+
+    .label-pill{padding:8px 16px;border-radius:6px;font-weight:700;letter-spacing:0.6px}
+
+ 
+
+    
+
+    .lbl-padaria{background:var(--padaria)}
+    .lbl-carnes{background:var(--carnes)}
+
+    /* vertical side panels */
+    .side-left, .side-right{position:absolute;top:120px;bottom:120px;width:80px;padding:8px;display:flex;flex-direction:column;gap:14px}
+    .side-left{left:14px}
+    .side-right{right:14px;align-items:flex-end}
+    .side-box{background:var(--sidepanel);padding:8px 10px;border-radius:6px;min-width:64px;text-align:center;font-weight:700}
+
+    /* Center aisles layout */
+    .center{position:absolute;left:140px;right:140px;top:120px;bottom:220px;display:flex;justify-content:space-between;align-items:center}
+
+    .aisle{width:74px;height:340px;background:linear-gradient(180deg,var(--aisle),var(--aisle-shadow));border-radius:6px;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative}
+    .aisle .label-vertical{writing-mode:vertical-rl;text-orientation:mixed;color:#fff;font-weight:800;letter-spacing:3px}
+    .aisle .aisle-num{position:absolute;bottom:-18px;background:#4b5563;color:#fff;padding:4px 8px;border-radius:4px;font-size:13px}
+
+    /* small gray bases to match reference */
+    .aisle-base{position:absolute;bottom:-40px;width:54px;height:18px;background:#57565d;border-radius:4px}
+
+    /* impulse purchase bar + small boxes */
+    .impulse{position:absolute;left:120px;right:120px;bottom:140px;height:36px;background:var(--impulse);display:flex;align-items:center;justify-content:center;border-radius:6px;font-weight:800;color:white}
+    .impulse-row{position:absolute;left:220px;right:220px;bottom:100px;display:flex;justify-content:space-between;gap:12px;margin-bottom: -20px;color: #8b5cf6;}
+    .impulse-row .small{width:36px;height:48px;background:var(--checkout);border-radius:4px;background-color: #e00d0d;}
+
+    /* checkout area */
+    .checkout{position:absolute;left:180px;right:180px;bottom:48px;height:68px;display:flex;align-items:center;justify-content:center}
+    .checkout .label{font-weight:800;color:var(--text-muted);    margin-bottom: -20px;}
+
+    /* entrance / exit */
+    .bottom-row{position:absolute;left:0;right:0;bottom:8px;display:flex;justify-content:space-between;padding:0 48px}
+    .bottom-line{height:6px;background:#111827;border-radius:2px;width:220px}
+    .entrance-label{margin-top:8px;text-align:center;font-weight:700}
+
+    /* decorative cart area on right */
+    .cart-area{position:absolute;width:160px;height:140px;display:flex;flex-direction:column;align-items:center;justify-content:center;margin-bottom: 500px;}
+    .cart-dots{width:120px;height:8px;margin-top:6px;background:linear-gradient(90deg, rgba(0,0,0,0.06) 10%, transparent 10%);border-radius:999px}
+
+    /* right tall aqua block (maybe refrigerators) */
+    .tall-aqua{position:absolute;right:120px;top:220px;width:90px;height:120px;border-radius:6px}
+
+    /* hover highlight purely visual */
+    .aisle:hover{transform:translateY(-6px) scale(1.02);box-shadow:0 20px 40px rgba(14,30,37,0.08);transition:all .2s}
+
+    .label-pill.lbl-carnes:hover{
+transform:translateY(-6px) scale(1.02);box-shadow:0 20px 40px rgba(14,30,37,0.08);transition:all .2s
+
+    }
+
+
+
+
+    .label-pill.lbl-padaria:hover{
+transform:translateY(-6px) scale(1.02);box-shadow:0 20px 40px rgba(14,30,37,0.08);transition:all .2s
+
+    }
+
+
+
+
+
+    /* tiny responsive tweaks */
+    @media (max-width:920px){
+      .stage{padding:12px}
+      .map{height:620px}
+      .center{left:100px;right:100px}
+    }
+    @media (max-width:640px){
+      .map{padding:12px;height:760px}
+      .center{left:60px;right:60px}
+      .side-left,.side-right{display:none}
+    }
+
+    /* Small readable labels inside aisles for vertical text fallback */
+    .aisle .label-wrap{transform:rotate(180deg);}
+
+  </style>
+</head>
+<body>
+  <div class="stage">
+    <div class="map" role="img" aria-label="Mapa do supermercado">
+
+      <!-- Top row: padaria (left), carnes (center), small labels right -->
+      <div class="top-row" style="position:relative">
+        <div class="top-left">
+          <div class="label-pill lbl-padaria">PADARIA</div>
+        </div>
+        <div class="top-center" style="position:absolute;left:0;right:0;top:-10px;display:flex;justify-content:center">
+          <div class="label-pill lbl-carnes">AÇOUGUE</div>
+        </div>
+        <div class="top-right"></div>
+      </div>
+
+      <!-- Side panels (left) -->
+      <div class="side-left">
+        
+        <div class="side-box" style="background:var(--sidepanel)">HORTIFRUTI</div>
+        <div class="side-box" style="background:#efd7ff">FLORES</div>
+        <div class="side-box" style="background:#cbd5e1">CAIXA ELETRÔ</div>
+      </div>
+
+      <!-- Side panels (right) -->
+      <div class="side-right">
+        <div class="side-box" style="background:#ffd7d7">PESCADOS</div>
+        <div class="side-box" style="background:#dff3f6">PEÇA R.LEVE</div>
+        <div class="side-box" style="background:var(--darkpanel);color:white">BEBIDAS</div>
+        <div class="side-box" style="background:#ead9bd">BAR</div>
+      </div>
+
+      <!-- Tall aqua block on right (refrigerated section) -->
+      <div class="tall-aqua"></div>
+
+      <!-- Center aisles (5) -->
+      <div class="center">
+        <div class="aisle" id="s1"><div class="label-vertical">SEÇÃO</div><div class="aisle-num">1</div><div class="aisle-base"></div></div>
+        <div class="aisle" id="s2"><div class="label-vertical">SEÇÃO</div><div class="aisle-num">2</div><div class="aisle-base"></div></div>
+        <div class="aisle" id="s3"><div class="label-vertical">SEÇÃO</div><div class="aisle-num">3</div><div class="aisle-base"></div></div>
+        <div class="aisle" id="s4"><div class="label-vertical">SEÇÃO</div><div class="aisle-num">4</div><div class="aisle-base"></div></div>
+        <div class="aisle" id="s5"><div class="label-vertical">SEÇÃO</div><div class="aisle-num">5</div><div class="aisle-base"></div></div>
+      </div>
+
+      <!-- Impulse purchase bar -->
+      <div class="impulse">COMPRA IMPULSIVA</div>
+      <div class="impulse-row">
+        <div class="small"></div>
+        <div class="small"></div>
+        <div class="small"></div>
+        <div class="small"></div>
+        <div class="small"></div>
+        <div class="small"></div>
+        <div class="small"></div>
+      </div>
+
+      <!-- Checkout area -->
+      <div class="checkout"><div class="label">CAIXA</div></div>
+
+   
+
+      <!-- Entrance / Exit bottom -->
+      <div class="bottom-row">
+        <div style="text-align:center">
+     <div class="bottom-line"></div>
+          <div class="entrance-label">ENTRADA</div>
+        </div>
+        <div style="text-align:center">
+          <div class="bottom-line"></div>
+          <div class="entrance-label">SAÍDA</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <script src="inde.js"></script>
+</body>
+</html>
